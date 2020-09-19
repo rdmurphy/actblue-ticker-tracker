@@ -1,7 +1,8 @@
 name: Scrape ActBlue ticker
 
 on:
-  push:
+  schedule:
+    - cron: "*/5 * * * *"
 
 jobs:
   scrape:
