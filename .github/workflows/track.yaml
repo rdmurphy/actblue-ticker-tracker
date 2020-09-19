@@ -17,5 +17,5 @@ jobs:
       - name: Commit to GitHub
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Changed by ${{ steps.scraper.output.difference }}
+          commit_message: Changed by ${{ steps.scraper.outputs.difference }}
           file_pattern: sitewide_raised_amount.txt
