@@ -19,3 +19,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Changed by ${{ steps.scraper.output.difference }}
+          file_pattern: sitewide_raised_amount.txt
