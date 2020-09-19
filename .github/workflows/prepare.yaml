@@ -1,0 +1,22 @@
+name: Prepare CSV of amounts
+
+on:
+  schedule:
+    - cron: "5 * * * *" # every hour at minute 5
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Run scraper
+        id: scraper
+        run: ./format.sh
+
+      - name: Commit to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: amounts.csv updated
+          file_pattern: amounts.csv
