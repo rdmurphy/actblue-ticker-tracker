@@ -1,0 +1,21 @@
+name: Scrape ActBlue ticker
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: action/checkout@v2
+
+      - name: Run scraper
+        id: scraper
+        run: ./scrape.sh
+
+      - name: Commit to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Changed by ${{ steps.scraper.output.difference }}
