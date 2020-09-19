@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Run scraper
         id: scraper
