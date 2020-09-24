@@ -2,7 +2,7 @@ name: Prepare CSV of amounts
 
 on:
   schedule:
-    - cron: "5 * * * *" # every hour at minute 5
+    - cron: "20,40 * * * *" # every 20 and 40th minute
 
 jobs:
   scrape:
