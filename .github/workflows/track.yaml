@@ -22,7 +22,7 @@ jobs:
           file_pattern: sitewide_raised_amount.txt
 
       - name: Prepare CSV of amounts
-        id: scraper
+        id: format
         run: ./format.sh
 
       - name: Commit amounts.csv to GitHub
