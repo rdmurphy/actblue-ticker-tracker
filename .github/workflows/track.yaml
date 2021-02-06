@@ -3,7 +3,6 @@ name: Scrape ActBlue ticker
 on:
   schedule:
     - cron: "*/15 * * * *"
-  workflow_dispatch:
 
 jobs:
   scrape:
@@ -11,11 +10,6 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Test
-        run: git log amounts.csv
 
       - name: Run scraper
         id: scraper
@@ -26,6 +20,7 @@ jobs:
         with:
           commit_message: Changed by ${{ steps.scraper.outputs.difference }}
           file_pattern: sitewide_raised_amount.txt
+          skip_fetch: true
 
       - name: Prepare CSV of amounts
         id: format
@@ -36,3 +31,4 @@ jobs:
         with:
           commit_message: amounts.csv updated
           file_pattern: amounts.csv
+          skip_fetch: true
