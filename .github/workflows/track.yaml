@@ -23,6 +23,7 @@ jobs:
         with:
           commit_message: Changed by ${{ steps.scraper.outputs.difference }}
           file_pattern: sitewide_raised_amount.txt
+          skip_fetch: true
 
       - name: Test
         run: "git log --pretty=format:%h sitewide_raised_amount.txt"
@@ -36,3 +37,4 @@ jobs:
         with:
           commit_message: amounts.csv updated
           file_pattern: amounts.csv
+          skip_fetch: true
