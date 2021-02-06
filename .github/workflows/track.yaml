@@ -3,6 +3,7 @@ name: Scrape ActBlue ticker
 on:
   schedule:
     - cron: "*/15 * * * *"
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -13,8 +14,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Force pull
-        run: git pull --unshallow
+      - name: Test
+        run: git log amounts.csv
 
       - name: Run scraper
         id: scraper
