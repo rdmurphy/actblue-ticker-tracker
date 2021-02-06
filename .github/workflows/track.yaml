@@ -14,9 +14,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Test
-        run: "git log --pretty=format:%h sitewide_raised_amount.txt"
-
       - name: Run scraper
         id: scraper
         run: ./scrape.sh
@@ -26,6 +23,9 @@ jobs:
         with:
           commit_message: Changed by ${{ steps.scraper.outputs.difference }}
           file_pattern: sitewide_raised_amount.txt
+
+      - name: Test
+        run: "git log --pretty=format:%h sitewide_raised_amount.txt"
 
       - name: Prepare CSV of amounts
         id: format
