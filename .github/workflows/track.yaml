@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Test
-        run: git log amounts.csv
+        run: "git log --pretty=format:%h sitewide_raised_amount.txt"
 
       - name: Run scraper
         id: scraper
