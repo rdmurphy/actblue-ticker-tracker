@@ -10,4 +10,4 @@ echo -n "$NEW_AMOUNT" > "$FILE"
 
 DIFFERENCE=$((${NEW_AMOUNT} - ${PREVIOUS_AMOUNT}))
 
-echo "::set-output name=difference::${DIFFERENCE}"
+echo "difference=${DIFFERENCE}" >> $GITHUB_ENV

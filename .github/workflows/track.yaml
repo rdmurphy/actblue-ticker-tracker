@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -20,7 +20,7 @@ jobs:
       - name: Commit sitewide_raised_amount.txt to GitHub
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Changed by ${{ steps.scraper.outputs.difference }}
+          commit_message: Changed by ${{ env.difference }}
           file_pattern: sitewide_raised_amount.txt
           skip_fetch: true
 
