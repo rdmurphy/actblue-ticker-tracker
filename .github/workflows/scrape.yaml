@@ -20,3 +20,20 @@ jobs:
         with:
           commit_message: Changed by ${{ env.difference }}
           file_pattern: sitewide_raised_amount.txt
+
+  insert:
+    runs-on: ubuntu-latest
+    needs: scrape
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Run inserter
+        id: inserter
+        run: ./insert.sh
+
+      - name: Commit amounts.csv to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: tmp.csv updated
+          file_pattern: tmp.csv
