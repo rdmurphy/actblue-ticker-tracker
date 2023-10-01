@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Insert the header
 echo "amount,timestamp" > diff.csv
 

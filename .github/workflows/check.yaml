@@ -5,7 +5,7 @@ on:
     - cron: "35 * * * *" # 35 minutes past the hour
 
 jobs:
-  scrape:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
