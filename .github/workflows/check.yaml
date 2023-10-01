@@ -1,0 +1,17 @@
+name: Compare new method to old method
+
+on:
+  schedule:
+    - cron: "35 * * * *" # 35 minutes past the hour
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run check script
+        run: ./check.sh

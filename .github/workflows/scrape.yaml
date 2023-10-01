@@ -41,5 +41,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
-          commit_message: tmp.csv updated
-          file_pattern: tmp.csv
+          commit_message: amounts.csv updated
+          file_pattern: amounts.csv
