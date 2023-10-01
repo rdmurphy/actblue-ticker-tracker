@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ needs.scrape.outputs.commit_hash }}
+          fetch-tags: true
 
       - name: Run inserter
         id: inserter
