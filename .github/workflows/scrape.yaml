@@ -7,6 +7,8 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    outputs:
+      commit_hash: ${{ steps.auto-commit-action.outputs.commit_hash }}
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
@@ -16,6 +18,7 @@ jobs:
         run: ./scrape.sh
 
       - name: Commit sitewide_raised_amount.txt to GitHub
+        id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Changed by ${{ env.difference }}
@@ -27,6 +30,8 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.scrape.outputs.commit_hash }}
 
       - name: Run inserter
         id: inserter
