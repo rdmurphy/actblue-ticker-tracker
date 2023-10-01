@@ -2,7 +2,7 @@ name: Prepare amounts.csv
 
 on:
   schedule:
-    - cron: "46 * * * *" # 46 minutes past the hour
+    - cron: "16 * * * *" # 16 minutes past the hour
 
 jobs:
   scrape:
