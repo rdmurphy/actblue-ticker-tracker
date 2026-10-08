@@ -27,6 +27,8 @@ jobs:
   insert:
     runs-on: ubuntu-latest
     needs: scrape
+    # only add a row when the scraper actually committed a new amount
+    if: needs.scrape.outputs.commit_hash != ''
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
