@@ -1,0 +1,31 @@
+name: Insert ActBlue ticker value
+
+on:
+  push:
+    branches:
+      - main
+    # only add a row when a new amount is pushed
+    paths:
+      - sitewide_raised_amount.txt
+
+# run one insert at a time so back-to-back pushes don't race to commit amounts.csv
+concurrency:
+  group: insert
+  cancel-in-progress: false
+
+jobs:
+  insert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v7
+
+      - name: Run inserter
+        id: inserter
+        run: ./insert.sh
+
+      - name: Commit amounts.csv to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: amounts.csv updated
+          file_pattern: amounts.csv
